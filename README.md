@@ -36,6 +36,7 @@ A node that allows you to check whether text is present and whether it is matchi
   * `Https` - Adds "https://" before the text.
   * `None` - Uses only the contents of the `text` box.
 * `text` - The text from the QR code before any AI processing. This (combined with `protocol`) will be compared against the `extracted_text`.
+* `passthrough` - If set to `False` pipelines will be interrupted when a QR fails the readability and match tests. When set to `True`, it will be bypassed.
 
 
 #### Outputs
