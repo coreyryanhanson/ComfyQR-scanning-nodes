@@ -1,4 +1,4 @@
-# comfy-qr-validation-nodes
+# ComfyQR-scanning-nodes
 
 A set of ComfyUI nodes to quickly test generated QR codes for scannability. A companion project to [Comfy-QR](https://gitlab.com/sofuego-comfy-nodes/ComfyQR).
 
