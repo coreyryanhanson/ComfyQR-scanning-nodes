@@ -8,7 +8,7 @@ class QRReader:
         pass
 
     FUNCTION = "read_qr"
-    CATEGORY = "Comfy-QR"
+    CATEGORY = "ComfyQR"
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("EXTRACTED_TEXT",)
 
@@ -48,7 +48,7 @@ class QRValidator:
         self.text = ""
 
     FUNCTION = "validate_qr"
-    CATEGORY = "Comfy-QR"
+    CATEGORY = "ComfyQR"
     RETURN_TYPES = ("IMAGE", "INT",)
     RETURN_NAMES = ("IMAGE", "VALIDATION_CODE",)
 

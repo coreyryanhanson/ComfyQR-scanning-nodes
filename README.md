@@ -1,8 +1,8 @@
 # comfy-qr-validation-nodes
 
-A set of ComfyUI nodes to quickly test generated QR codes for scannability. A companion project to [Comfy-QR](https://gitlab.com/sofuego-comfy-nodes/comfy-qr).
+A set of ComfyUI nodes to quickly test generated QR codes for scannability. A companion project to [Comfy-QR](https://gitlab.com/sofuego-comfy-nodes/ComfyQR).
 
-This repository is managed publicly on [Gitlab](https://gitlab.com/sofuego-comfy-nodes/comfy-qr-validation-nodes), but also mirrored on [Github](https://github.com/coreyryanhanson/comfy-qr-validation-nodes). Please submit any [issues](https://gitlab.com/sofuego-comfy-nodes/comfy-qr-validation-nodes/-/issues) or [pull requests](https://gitlab.com/sofuego-comfy-nodes/comfy-qr-validation-nodes/-/merge_requests) to the gitlab repo.
+This repository is managed publicly on [Gitlab](https://gitlab.com/sofuego-comfy-nodes/ComfyQR-scanning-nodes), but also mirrored on [Github](https://github.com/coreyryanhanson/ComfyQR-scanning-nodes). Please submit any [issues](https://gitlab.com/sofuego-comfy-nodes/ComfyQR-scanning-nodes/-/issues) or [pull requests](https://gitlab.com/sofuego-comfy-nodes/ComfyQR-scanning-nodes/-/merge_requests) to the gitlab repo.
 
 ## Getting started
 
