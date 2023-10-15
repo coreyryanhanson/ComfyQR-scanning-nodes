@@ -1,6 +1,6 @@
 {
-  "last_node_id": 8,
-  "last_link_id": 17,
+  "last_node_id": 9,
+  "last_link_id": 20,
   "nodes": [
     {
       "id": 5,
@@ -20,7 +20,7 @@
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 16
+          "link": 20
         }
       ],
       "properties": {},
@@ -29,103 +29,11 @@
       ]
     },
     {
-      "id": 2,
-      "type": "comfy-qr-validate",
-      "pos": [
-        1046,
-        247
-      ],
-      "size": {
-        "0": 400,
-        "1": 200
-      },
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 11
-        },
-        {
-          "name": "extracted_text",
-          "type": "STRING",
-          "link": 2
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            16
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "VALIDATION_CODE",
-          "type": "INT",
-          "links": null,
-          "shape": 3,
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "comfy-qr-validate"
-      },
-      "widgets_values": [
-        "Https",
-        "gitlab.com/sofuego-comfy-nodes/comfy-qr-validation-nodes",
-        "False"
-      ]
-    },
-    {
-      "id": 4,
-      "type": "comfy-qr-read",
-      "pos": [
-        767,
-        422
-      ],
-      "size": {
-        "0": 254.40000915527344,
-        "1": 58
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 17
-        }
-      ],
-      "outputs": [
-        {
-          "name": "EXTRACTED_TEXT",
-          "type": "STRING",
-          "links": [
-            2
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "comfy-qr-read"
-      },
-      "widgets_values": [
-        "pyzbar"
-      ]
-    },
-    {
       "id": 6,
       "type": "ImagePadForOutpaint",
       "pos": [
-        412,
-        428
+        389,
+        417
       ],
       "size": {
         "0": 315,
@@ -170,11 +78,50 @@
       ]
     },
     {
+      "id": 4,
+      "type": "comfy-qr-read",
+      "pos": [
+        750,
+        407
+      ],
+      "size": {
+        "0": 254.40000915527344,
+        "1": 58
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "EXTRACTED_TEXT",
+          "type": "STRING",
+          "links": [
+            18
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "comfy-qr-read"
+      },
+      "widgets_values": [
+        "pyzbar"
+      ]
+    },
+    {
       "id": 3,
       "type": "LoadImage",
       "pos": [
-        56,
-        303
+        40,
+        263
       ],
       "size": {
         "0": 315,
@@ -189,7 +136,7 @@
           "type": "IMAGE",
           "links": [
             5,
-            11
+            19
           ],
           "shape": 3,
           "slot_index": 0
@@ -208,38 +155,70 @@
         "test_image.png",
         "image"
       ]
+    },
+    {
+      "id": 9,
+      "type": "comfy-qr-validate",
+      "pos": [
+        1054,
+        265
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 19
+        },
+        {
+          "name": "extracted_text",
+          "type": "STRING",
+          "link": 18,
+          "widget": {
+            "name": "extracted_text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            20
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "VALIDATION_CODE",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "comfy-qr-validate"
+      },
+      "widgets_values": [
+        "",
+        "Https",
+        "gitlab.com/sofuego-comfy-nodes/comfy-qr-validation-nodes",
+        "False"
+      ]
     }
   ],
   "links": [
-    [
-      2,
-      4,
-      0,
-      2,
-      1,
-      "STRING"
-    ],
     [
       5,
       3,
       0,
       6,
-      0,
-      "IMAGE"
-    ],
-    [
-      11,
-      3,
-      0,
-      2,
-      0,
-      "IMAGE"
-    ],
-    [
-      16,
-      2,
-      0,
-      5,
       0,
       "IMAGE"
     ],
@@ -248,6 +227,30 @@
       6,
       0,
       4,
+      0,
+      "IMAGE"
+    ],
+    [
+      18,
+      4,
+      0,
+      9,
+      1,
+      "STRING"
+    ],
+    [
+      19,
+      3,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      9,
+      0,
+      5,
       0,
       "IMAGE"
     ]

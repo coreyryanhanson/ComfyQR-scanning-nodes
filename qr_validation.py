@@ -11,6 +11,7 @@ class QRReader:
     CATEGORY = "ComfyQR"
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("EXTRACTED_TEXT",)
+    OUTPUT_IS_LIST = (True,)
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -20,7 +21,7 @@ class QRReader:
                 "library": (["pyzbar",], {"default": "pyzbar"}),
             },
         }
-    
+
     def _pyzbar_read(self, img):
         try:
             decoded_objects = decode(img)
@@ -29,20 +30,24 @@ class QRReader:
             return ""
         except OSError:
             raise OSError("The pyzbar package requires the zbar libraries to be installed to your system. Instructions depending on your OS and can be found here: https://github.com/NaturalHistoryMuseum/pyzbar/")
-    
+
     def _tensor_to_img(self, tensor):
-        i = 255. * tensor.cpu().numpy()[0]
+        i = 255 * tensor.cpu().numpy()
         return Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
 
     def read_qr(self, image, library):
-        img = self._tensor_to_img(image)
         if library == "pyzbar":
-            text = self._pyzbar_read(img)
+            func = self._pyzbar_read
         else:
             raise ValueError("This plugin currently only supports pyzbar.")
+        text = []
+
+        for batch in image:
+            img = self._tensor_to_img(batch)
+            text.append(func(img))
         return (text, )
 
-    
+
 class QRValidator:
     def __init__(self):
         self.text = ""
@@ -63,7 +68,7 @@ class QRValidator:
                 "passthrough": (["False", "True",], {"default": "False"}),
             },
         }
-    
+
     def update_text(self, protocol, text):
         """This function takes input from a text box and a chosen internet
         protocol and stores a full address within an instance variable.
@@ -89,14 +94,14 @@ class QRValidator:
         if extracted_text != self.text:
             return 2
         return 0
-    
+
     def _exception_from_qr_validation_code(self, validation_code, extracted_text):
         if not validation_code:
             return
         if validation_code == 1:
             raise RuntimeError("There is no extracted_text to check.")
         raise RuntimeError(f"extracted_text of {extracted_text} does not match input text of {self.text}")
-    
+
     def validate_qr(self, image, extracted_text, protocol, text, passthrough):
         self.update_text(protocol, text)
         validation_code = self._create_qr_validation_code(extracted_text)
@@ -104,7 +109,7 @@ class QRValidator:
             self._exception_from_qr_validation_code(validation_code, extracted_text)
         return (image, validation_code)
 
-    
+
 NODE_CLASS_MAPPINGS = {
                        "comfy-qr-read": QRReader,
                        "comfy-qr-validate": QRValidator,
