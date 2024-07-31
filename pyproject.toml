@@ -2,7 +2,7 @@
 name = "comfyqr-scanning-nodes"
 description = "A set of ComfyUI nodes to quickly test generated QR codes for scannability. A companion project to ComfyQR."
 version = "0.1.0"
-license = "LICENSE"
+license = { file = "LICENSE" }
 dependencies = ["pyzbar"]
 
 [project.urls]
